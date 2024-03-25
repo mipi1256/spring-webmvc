@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,7 @@ public class ControllerV2 {
 
       String name = "짹짹이";
       List<String> hobbyList = new ArrayList<>();
+      // You are able to change the data inside this list by adding, erasing, etc
       Collections.addAll(hobbyList, "전깃줄 앉아있기", "좁쌀 훔쳐먹기", "짹짹거리기", "멍때리기");
 
       // Model 객체에 데이터 담기 ("이름", 값)
@@ -36,6 +38,32 @@ public class ControllerV2 {
 
       return "chap02/hobbies";
    }
+
+   // == 2. ModelAndView 객체 사용
+   @GetMapping("/hobbies2")
+   public ModelAndView hobbies2() {
+      System.out.println("/model/hobbies2 : GET 요청!");
+
+      // jsp로 보낼 데이터 생성
+      String name = "냥냥이";
+      // List.of를 통해서 빠른 리스트 생성이 가능하지만, 해당 리스트는 불변 리스트가 됩니다.
+      // You aren't able to add, erase, edit the list made by List.of()
+      List<String> hobbyList = List.of("낮잠자기", "캣타워 올라가기", "털뭉치 굴리기");
+
+      // jsp로 보낼 데이터를 ModelAndView에 담기
+      ModelAndView mv = new ModelAndView();
+      mv.addObject("userName", name);
+      mv.addObject("hobbies", hobbyList);
+
+      // view의 데이터를 따로 담아줌
+      mv.setViewName("chap02/hobbies");
+
+      return mv; // 문자열이 아닌 mv객체를 리턴.
+   }
+
+
+
+
 
 
 
