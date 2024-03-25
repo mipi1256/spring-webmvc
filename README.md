@@ -18,3 +18,18 @@ server.port=8181
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
 ```
+
+- 자바프로그램과 MySQL을 연동해주는 커넥터 추가
+```
+https://mvnrepository.com/artifact/mysql/mysql-connector-java
+
+implementation 'mysql:mysql-connector-java:8.0.33'
+```
+
+- Spring Boot Starter JDBC 추가
+```
+https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+
+implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.2.4'
+
+```
