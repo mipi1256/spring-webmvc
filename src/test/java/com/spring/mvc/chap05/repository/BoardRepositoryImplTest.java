@@ -1,13 +1,10 @@
 package com.spring.mvc.chap05.repository;
 
-import com.spring.mvc.chap04.entity.Person;
 import com.spring.mvc.chap05.entity.Board;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 

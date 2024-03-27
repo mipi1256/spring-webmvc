@@ -12,6 +12,7 @@ package com.spring.mvc.chap05.entity;
  */
 
 
+import com.spring.mvc.chap05.dto.request.BoardWriteRequestDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -28,6 +29,14 @@ public class Board {
    private int viewCount; // 조회수
    private LocalDateTime reg_date; // 작성일자 시간
    private String writer; // 작성자
+
+   public Board(BoardWriteRequestDTO dto) {
+      this.writer = dto.getWriter();
+      this.title = dto.getTitle();
+      this.content = dto.getContent();
+      //this.reg_date = LocalDateTime.now(); You can add this date in Java or when the new data is insert(DB)
+   }
+
 
 }
 
