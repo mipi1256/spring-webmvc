@@ -45,6 +45,9 @@ public class BoardService {
    }
 
 
+   public void delete(int bno) {
+      repository.delete(bno);
+   }
 }
 
 

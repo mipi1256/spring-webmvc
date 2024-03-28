@@ -55,6 +55,13 @@ public class BoardController {
 
    // 4. 글 삭제 요청 (/board/delete : GET)
    // 글번호 전닿되면 삭제 진행
+   @GetMapping("/delete")
+   public String delete(int bno) {
+      System.out.println("/board/delete: GET!! " + bno);
+      service.delete(bno);
+
+      return "redirect:/board/list";
+   }
 
    // 5. 글 상세보기 요청 (/board/detail : GET)
    // 글 번호 전달되면 해당 내용 상세보기 처리
