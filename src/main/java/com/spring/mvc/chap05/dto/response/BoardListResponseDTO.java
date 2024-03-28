@@ -22,12 +22,13 @@ public class BoardListResponseDTO {
       this.boardNo = board.getBoardNo();
       this.shortTitle = makeShortTitle(board.getTitle());
       this.shortContent = makeShortContent(board.getContent());
-      this.regDate = makePrettierDateString(board.getReg_date());
+      this.regDate = makePrettierDateString(board.getRegDate());
       this.viewCount = board.getViewCount();
       this.writer = board.getWriter();
    }
 
    public static String makePrettierDateString(LocalDateTime regDate) {
+      //System.out.println("regDate = " + regDate);
       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
       return dtf.format(regDate);
    }

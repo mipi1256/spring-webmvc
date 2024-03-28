@@ -5,7 +5,7 @@ package com.spring.mvc.chap05.entity;
       board_No INT PRIMARY KEY AUTO_INCREMENT,
       title VARCHAR(100) NOT NULL,
       content VARCHAR(2000),
-      view_count INT,
+      view_count INT DEFAULT 0,
       reg_date DATETIME DEFAULT current_timestamp,
       writer VARCHAR(50) NOT NULL
    );
@@ -27,7 +27,7 @@ public class Board {
    private String title; // 제목
    private String content; // 내용
    private int viewCount; // 조회수
-   private LocalDateTime reg_date; // 작성일자 시간
+   private LocalDateTime regDate; // 작성일자 시간
    private String writer; // 작성자
 
    public Board(BoardWriteRequestDTO dto) {

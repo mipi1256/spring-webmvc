@@ -33,3 +33,18 @@ https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-
 implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.2.4'
 
 ```
+
+- MyBatis Spring Boot Starter 추가
+```
+	// Spring Boot 3에서는 mybatis 3.x 버전으로 진행하세요.
+	// https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+```
+
+
+
+
+
+
+
+

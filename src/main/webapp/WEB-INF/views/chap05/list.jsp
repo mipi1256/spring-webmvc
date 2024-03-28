@@ -153,13 +153,15 @@
 
             if (e.target.matches('.card-container')) return;
             
-            // 이벤트가 발생한 타겟에서 가장 가까운 .del-btn이 가지고 있는 data-href를 얻는다.
-            const deleteLocation = e.target.closest('.del-btn').dataset.href;
+            
 
             // 삭제 버튼을 눌렀다면~
             if (e.target.matches('.card-btn-group *')) {
                 console.log('삭제 버튼 클릭됨!');
                 $modal.style.display = 'flex'; // 숨겨진 모달창을 드러내기.
+
+                // 이벤트가 발생한 타겟에서 가장 가까운 .del-btn이 가지고 있는 data-href를 얻는다.
+                const deleteLocation = e.target.closest('.del-btn').dataset.href;
                 
                 // 확인 버튼 이벤트
                 $confirmDelete.onclick = e => {
