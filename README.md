@@ -40,6 +40,11 @@ implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.2.4'
 	// https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 ```
+- 입력값 검증 라이브러리
+```
+    // 입력값 검증 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+```
 
 
 
