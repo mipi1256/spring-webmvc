@@ -32,7 +32,7 @@ public class ReplyPostRequestDTO {
       return Reply.builder()
             .replyText(text)
             .replyWriter(author)
-            .replyNo(bno)
+            .boardNo(bno)
             .build();
    }
 
