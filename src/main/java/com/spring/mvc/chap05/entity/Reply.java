@@ -15,7 +15,9 @@ package com.spring.mvc.chap05.entity;
 
 
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter @Getter @ToString
@@ -30,6 +32,7 @@ public class Reply {
    private String replyWriter;
    private LocalDateTime replyDate;
    private int boardNo;
+   private LocalDateTime updateDate;
 
 
 }

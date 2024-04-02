@@ -1,11 +1,13 @@
 package com.spring.mvc.chap05.api;
 
 import com.spring.mvc.chap05.common.Page;
+import com.spring.mvc.chap05.dto.request.ReplyModifyRequestDTO;
 import com.spring.mvc.chap05.dto.request.ReplyPostRequestDTO;
 import com.spring.mvc.chap05.dto.response.ReplyDetailResponseDTO;
 import com.spring.mvc.chap05.dto.response.ReplyListResponseDTO;
 import com.spring.mvc.chap05.service.ReplyService;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -77,6 +79,23 @@ public class ReplyApiController {
       replyService.register(dto);
 
       return ResponseEntity.ok("success");
+   }
+
+   @PutMapping
+   public ResponseEntity<?> update(@Validated @RequestBody ReplyModifyRequestDTO dto, BindingResult result) {
+
+      if (result.hasErrors()) {
+         return ResponseEntity
+               .badRequest()
+               .body(result.toString());
+      }
+
+      System.out.println("/apli/v1/replies: PUT!!");
+      System.out.println("dto = " + dto);
+
+      replyService.modify(dto);
+
+      return ResponseEntity.ok().body("modSuccess");
    }
 
 }
