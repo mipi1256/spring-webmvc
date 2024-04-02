@@ -57,6 +57,9 @@ public class ReplyService {
    }
 
 
+   public void delete(Integer replyNo) throws Exception{
+      mapper.delete(replyNo);
+   }
 
 
 
