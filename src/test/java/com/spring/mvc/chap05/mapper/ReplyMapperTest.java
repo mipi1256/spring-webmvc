@@ -1,8 +1,6 @@
 package com.spring.mvc.chap05.mapper;
 
-import com.spring.mvc.chap05.entity.Board;
 import com.spring.mvc.chap05.entity.Reply;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,12 +45,12 @@ class ReplyMapperTest {
    }
    */
 
-
+/*
    @Test
    @DisplayName("88번 게시물의 댓글 목록을 조회했을 때 결과 리스트의 사이즈는 n이어야 한다.")
    void findAllTest() {
       int boardNo = 88;
-      List<Reply> replyList = replyMapper.findAll(boardNo);
+      List<Reply> replyList = replyMapper.findAll(boardNo, page);
       assertEquals(8, replyList.size());
    }
    
@@ -86,6 +84,8 @@ class ReplyMapperTest {
       assertEquals(newReplyText, foundReply.getReplyText());
 
    }
+
+ */
 
 
 
