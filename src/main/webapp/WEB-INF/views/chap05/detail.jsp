@@ -279,7 +279,7 @@
          end,
          prev,
          next,
-         page,
+         page,z
          finalPage
       }) {
 
