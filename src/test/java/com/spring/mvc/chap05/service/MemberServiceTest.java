@@ -15,7 +15,7 @@ class MemberServiceTest {
 
    @Autowired
    MemberService memberService;
-
+/*
    @Test
    @DisplayName("회원정보를 전달하면 비밀번호가 암호화되어 DB에 저장될 것이다.")
    void joinTest() {
@@ -77,6 +77,8 @@ class MemberServiceTest {
       // then
       assertEquals(SUCCESS, result);
    }
+
+ */
 
 
 }

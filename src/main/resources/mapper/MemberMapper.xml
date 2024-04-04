@@ -29,11 +29,21 @@
         </if>
     </select>
 
+    <!-- saveAutoLogin -->
     <update id="saveAutoLogin">
         UPDATE tbl_member
         SET session_id = #{sessionId}, limit_time = #{limitTime}
         WHERE account = #{account}
     </update>
+
+    <!-- findMemberByCookie -->
+    <select id="findMemberByCookie" resultType="member">
+        SELECT account, name, email, auth, limit_time
+        FROM tbl_member
+        WHERE session_id = #{sessionId}
+    </select>
+
+
 
 
 

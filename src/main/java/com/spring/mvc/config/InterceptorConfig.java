@@ -3,6 +3,7 @@ package com.spring.mvc.config;
 // 내가 만든 인터셉터들을 스프링 컨텍스트에 등록하는 설정 파일
 
 import com.spring.mvc.interceptor.AfterLoginInterceptor;
+import com.spring.mvc.interceptor.AutoLoginInterceptor;
 import com.spring.mvc.interceptor.BoardInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
    private final AfterLoginInterceptor afterLoginInterceptor;
    private final BoardInterceptor boardInterceptor;
+   private final AutoLoginInterceptor autoLoginInterceptor;
 
    @Override
    public void addInterceptors(InterceptorRegistry registry) {
@@ -24,12 +26,16 @@ public class InterceptorConfig implements WebMvcConfigurer {
             .addInterceptor(afterLoginInterceptor) // 어떤 인터셉터를 등록할 것인가
             .addPathPatterns("/members/sign-up", "/members/sign-in"); // 어떤 요청에서 인터셉터를 동작하게 할 것인가
 
+      // Board 인터셉터
       registry
             .addInterceptor(boardInterceptor)
             .addPathPatterns("/board/*")
             .excludePathPatterns("/board/list", "/board/detail"); // 인터셉터 발동을 제외할 패턴.
 
-
+      // 자동 로그인 인터셉터
+      registry
+            .addInterceptor(autoLoginInterceptor)
+            .addPathPatterns("/**"); // It doesn't matter what page it get redirect. ** -> means multiple pathways
 
    }
 
