@@ -24,7 +24,9 @@
         <div class="main-title-wrapper">
             <h1 class="main-title">꾸러기 게시판</h1>
 
-            <button class="add-btn">새 글 쓰기</button>
+            <c:if test="${login != null}">
+                <button class="add-btn">새 글 쓰기</button>
+            </c:if>
         </div>
 
         <div class="top-section">
@@ -100,30 +102,35 @@
             <!-- 페이지 버튼 영역 -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination pagination-lg pagination-custom">
-                <c:if test="${maker.page.pageNo !=1}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=1&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
-                    </li>
-                </c:if>
+                    <c:if test="${maker.page.pageNo !=1}">
+                        <li class="page-item"><a class="page-link"
+                                href="/board/list?pageNo=1&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
+                        </li>
+                    </c:if>
 
-                <c:if test="${maker.prev}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.begin -1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">prev</a>
-                    </li>
-                </c:if>
+                    <c:if test="${maker.prev}">
+                        <li class="page-item"><a class="page-link"
+                                href="/board/list?pageNo=${maker.begin -1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">prev</a>
+                        </li>
+                    </c:if>
 
-                <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
-                    <li data-page-num="${i}" class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${i}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">${i}</a>
-                    </li>
-                </c:forEach>
+                    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+                        <li data-page-num="${i}" class="page-item">
+                            <a class="page-link"
+                                href="/board/list?pageNo=${i}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">${i}</a>
+                        </li>
+                    </c:forEach>
 
-                <c:if test="${maker.next}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.end + 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">next</a>
-                    </li>
-                </c:if>
-                <c:if test="${maker.page.pageNo !=maker.finalPage}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.finalPage}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
-                    </li>
-                </c:if>
+                    <c:if test="${maker.next}">
+                        <li class="page-item"><a class="page-link"
+                                href="/board/list?pageNo=${maker.end + 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${maker.page.pageNo !=maker.finalPage}">
+                        <li class="page-item"><a class="page-link"
+                                href="/board/list?pageNo=${maker.finalPage}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
 
@@ -158,8 +165,8 @@
             console.log('이벤트 타겟: ', e.target);
 
             if (e.target.matches('.card-container')) return;
-            
-            
+
+
 
             // 삭제 버튼을 눌렀다면~
             if (e.target.matches('.card-btn-group *')) {
@@ -168,7 +175,7 @@
 
                 // 이벤트가 발생한 타겟에서 가장 가까운 .del-btn이 가지고 있는 data-href를 얻는다.
                 const deleteLocation = e.target.closest('.del-btn').dataset.href;
-                
+
                 // 확인 버튼 이벤트
                 $confirmDelete.onclick = e => {
                     // 삭제 요청을 서버에 보내야 한다.
@@ -192,7 +199,8 @@
                 console.log('bno: ' + bno);
 
                 // 서버에 요청 보내기
-                location.href = '/board/detail/' + bno + '?pageNo=${s.pageNo}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}';
+                location.href = '/board/detail/' + bno +
+                    '?pageNo=${s.pageNo}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}';
 
             }
 
@@ -283,7 +291,6 @@
 
         appendPageActive();
         fixSearchOption();
-
     </script>
 
 </body>
