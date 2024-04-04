@@ -41,7 +41,7 @@ class MemberServiceTest {
             .password("ppp9999!")
             .build();
       // when
-      LoginResult result = memberService.authenticate(dto);
+      LoginResult result = memberService.authenticate(dto, request.getSession(), response);
       // then
       assertEquals(NO_ACC, result);
    }
@@ -57,7 +57,7 @@ class MemberServiceTest {
             .build();
 
       // when
-      LoginResult result = memberService.authenticate(dto);
+      LoginResult result = memberService.authenticate(dto, request.getSession(), response);
       // then
       assertEquals(NO_PW, result);
    }
@@ -73,7 +73,7 @@ class MemberServiceTest {
             .build();
 
       // when
-      LoginResult result = memberService.authenticate(dto);
+      LoginResult result = memberService.authenticate(dto, request.getSession(), response);
       // then
       assertEquals(SUCCESS, result);
    }

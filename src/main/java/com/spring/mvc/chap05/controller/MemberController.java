@@ -62,7 +62,7 @@ public class MemberController {
    public String signIn(LoginRequestDTO dto, RedirectAttributes ra, HttpServletResponse response, HttpServletRequest request) {
       log.info("/members/sign-in: POST!, dto: {}", dto);
 
-      LoginResult result = memberService.authenticate(dto);
+      LoginResult result = memberService.authenticate(dto, request.getSession(), response);
       log.debug("result: {} ", result);
 
       // Model에 담긴 데이터는 리다이렉트 시 jsp로 전달되지 못한다.
