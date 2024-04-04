@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/members")
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
 
    private final MemberService memberService;
@@ -26,16 +28,15 @@ public class MemberController {
    // 응답하고자 하는 화면의 경로가 url과 동일하다면 void로 처리할 수 있습니다. (선택사항)
    @GetMapping("/sign-up")
    public void signUp() {
-      System.out.println("/members/sign-up: GET!");
+      log.info("/members/sign-up: GET!");
    }
 
    // 아이디, 이메일 중복체크 비동기 요청 처리
    @GetMapping("/check/{type}/{keyword}")
    @ResponseBody
    public ResponseEntity<?> check(@PathVariable String type, @PathVariable String keyword) {
-      System.out.println("/member/check: async GET!!");
-      System.out.println("type = " + type);
-      System.out.println("keyword = " + keyword);
+      log.info("/member/check: async GET!!");
+      log.debug("type: {}, keyword: {}", type, keyword);
 
       boolean flag = memberService.checkDuplicateValue(type, keyword);
 
@@ -44,8 +45,7 @@ public class MemberController {
 
    @PostMapping("/sign-up")
    public String signUp(SignUpRequestDTO dto) {
-      System.out.println("/members/sign-up: POST!!");
-      System.out.println("dto = " + dto);
+      log.info("/members/sign-up: POST!!, dto: {}", dto);
 
       memberService.join(dto);
       return "redirect:/board/list";
@@ -54,17 +54,16 @@ public class MemberController {
    // 로그인 양식 화면 요청 처리
    @GetMapping("/sign-in")
    public void signIn() {
-      System.out.println("/members/sign-in: GET!!");
+      log.info("/members/sign-in: GET!!");
    }
 
    // 로그인 검증 요청
    @PostMapping("/sign-in")
    public String signIn(LoginRequestDTO dto, RedirectAttributes ra, HttpServletResponse response, HttpServletRequest request) {
-      System.out.println("/members/sign-in: POST!");
-      System.out.println("dto = " + dto);
+      log.info("/members/sign-in: POST!, dto: {}", dto);
 
       LoginResult result = memberService.authenticate(dto);
-      System.out.println("result = " + result);
+      log.debug("result: {} ", result);
 
       // Model에 담긴 데이터는 리다이렉트 시 jsp로 전달되지 못한다.
       // 리다이렉트는 응답이 나갔다가 재요청이 들어오는데, 그 과정에서
@@ -102,6 +101,7 @@ public class MemberController {
    // 로그아웃 요청 처리
    @GetMapping("/sign-out")
    public String signOut(HttpSession session) {
+      log.info("/members/sign-out: GET!");
 
       // 세션에서 로그인 정보 기록 삭제
       session.removeAttribute("login");
