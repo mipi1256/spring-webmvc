@@ -32,7 +32,6 @@ public class Board {
    private String writer; // 작성자
 
    public Board(BoardWriteRequestDTO dto) {
-      this.writer = dto.getWriter();
       this.title = dto.getTitle();
       this.content = dto.getContent();
       //this.reg_date = LocalDateTime.now(); You can add this date in Java or when the new data is insert(DB)
