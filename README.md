@@ -47,8 +47,14 @@ implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.2.4'
 ```
 - 스프링 시큐리티 모듈
 ```
-//스프링 시큐리티 모듈
+    //스프링 시큐리티 모듈
     implementation 'org.springframework.boot:spring-boot-starter-security'
+```
+- JSON-SIMPLE
+```
+	// json-simple: 문자열 JSON 데이터를 진짜 JSON으로 변환 및 데이터 취득을 도와주는 라이브러리
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 ```
 
 
