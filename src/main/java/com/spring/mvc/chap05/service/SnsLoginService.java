@@ -42,7 +42,7 @@ public class SnsLoginService {
 
       // 요청 바디에 파라미터 세팅
       MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-      params.add("grant-type", "authorization_code");
+      params.add("grant_type", "authorization_code");
       params.add("client_id",requestParam.get("appKey"));
       params.add("redirect_uri", requestParam.get("redirect"));
       params.add("code", requestParam.get("code"));
