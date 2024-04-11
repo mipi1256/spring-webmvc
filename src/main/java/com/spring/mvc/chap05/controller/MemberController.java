@@ -2,6 +2,7 @@ package com.spring.mvc.chap05.controller;
 
 import com.spring.mvc.chap05.dto.request.LoginRequestDTO;
 import com.spring.mvc.chap05.dto.request.SignUpRequestDTO;
+import com.spring.mvc.chap05.dto.response.LoginUserResponseDTO;
 import com.spring.mvc.chap05.entity.Member;
 import com.spring.mvc.chap05.entity.Member.LoginMethod;
 import com.spring.mvc.chap05.service.LoginResult;
@@ -127,6 +128,12 @@ public class MemberController {
       if (isAutoLogin(request)) {
          // 쿠키를 삭제해주고 DB 데이터도 원래대로 돌려놓아야 한다.
          memberService.autoLoginClear(request, response);
+      }
+
+      // sns 로그인
+      LoginUserResponseDTO dto = (LoginUserResponseDTO) session.getAttribute(LOGIN_KEY);
+      if (dto.getLoginMethod().equals("KAKAO")) {
+         memberService.kakaoLogout(dto, session);
       }
 
       // 세션에서 로그인 정보 기록 삭제
