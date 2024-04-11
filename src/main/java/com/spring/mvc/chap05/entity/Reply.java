@@ -48,6 +48,8 @@ public class Reply {
 
    private String profileImage;
 
+   private String loginMethod;
+
 
 
 }
