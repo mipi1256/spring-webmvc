@@ -56,8 +56,17 @@ implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.2.4'
 	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 ```
+- Spring Boot Email Starter
+```
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+implementation 'org.springframework.boot:spring-boot-starter-mail:3.2.4'
+```
 
-
+-	// 자바 언어를 통해 smtp 통신을 할 수 있게 하는 라이브러리
+```
+     // https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api
+     implementation 'jakarta.mail:jakarta.mail-api:2.1.2'
+```
 
 
 
